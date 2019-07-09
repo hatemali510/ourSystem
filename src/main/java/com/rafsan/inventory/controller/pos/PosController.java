@@ -63,6 +63,8 @@ public class PosController implements Initializable, ProductInterface {
 
     private double xOffset = 0;
     private double yOffset = 0;
+    private String Masna3iaType="مصنعية";
+    private int typeOfItem=0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -205,14 +207,19 @@ public class PosController implements Initializable, ProductInterface {
 
     @FXML
     public void addAction(ActionEvent event) {
-
-        if (validateInput()) {
+    	if(productField.getText().equals(Masna3iaType)) {
+    		quantityField.setText("1");
+        	typeOfItem=2;
+        }else {
+        	typeOfItem=1;
+        }
+        if (validateInput(typeOfItem)) {
             String productName = productField.getText();
             double unitPrice = Double.parseDouble(priceField.getText());
             double quantity = Double.parseDouble(quantityField.getText());
             double total = unitPrice * quantity;
             ITEMLIST.add(new Item(productName, unitPrice, quantity, total));
-
+            
             calculation();
 
             resetAdd();
@@ -293,18 +300,20 @@ public class PosController implements Initializable, ProductInterface {
         }
     }
 
-    private boolean validateInput() {
+    private boolean validateInput(int type) {
 
         String errorMessage = "";
-        if (quantityField.getText() == null || quantityField.getText().length() == 0) {
+        if ((quantityField.getText() == null || quantityField.getText().length() == 0) && typeOfItem==1) {
             errorMessage += "Quantity not supplied!\n";
         } else {
             double quantity = Double.parseDouble(quantityField.getText());
-            String available = quantityLabel.getText();
-            double availableQuantity = Double.parseDouble(available.substring(7));
-
-            if (quantity > availableQuantity) {
-                errorMessage += "Out of Stock!\n";
+            if(type==1) {
+	            String available = quantityLabel.getText();
+	            double availableQuantity = Double.parseDouble(available.substring(7));
+	
+	            if (quantity > availableQuantity && typeOfItem==1) {
+	                errorMessage += "Out of Stock!\n";
+	            }
             }
         }
 
