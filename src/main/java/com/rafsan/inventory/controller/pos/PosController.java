@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.NodeOrientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -325,6 +326,7 @@ public class PosController implements Initializable, ProductInterface {
     public void logoutAction(ActionEvent event) throws Exception {
         ((Node) (event.getSource())).getScene().getWindow().hide();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
+        root.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
         Stage stage = new Stage();
         root.setOnMousePressed((MouseEvent e) -> {
             xOffset = e.getSceneX();

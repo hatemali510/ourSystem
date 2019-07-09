@@ -30,6 +30,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import javafx.geometry.*;
 
 public class AdminController implements Initializable {
 
@@ -179,6 +180,7 @@ public class AdminController implements Initializable {
     public void logoutAction(ActionEvent event) throws Exception {
         ((Node) (event.getSource())).getScene().getWindow().hide();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
+        root.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
         Stage stage = new Stage();
         root.setOnMousePressed((MouseEvent e) -> {
             xOffset = e.getSceneX();
@@ -202,6 +204,7 @@ public class AdminController implements Initializable {
         double height = ((Node) event.getSource()).getScene().getHeight();
 
         Parent root = FXMLLoader.load(getClass().getResource(path));
+        root.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
         Scene scene = new Scene(root, width, height);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle(title);

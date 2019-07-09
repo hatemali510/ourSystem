@@ -9,6 +9,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.NodeOrientation;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -101,6 +102,7 @@ public class LoginController implements Initializable {
     private void windows(String path, String title) throws Exception {
 
         Parent root = FXMLLoader.load(getClass().getResource(path));
+        root.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setTitle(title);

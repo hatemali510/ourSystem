@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.NodeOrientation;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -175,6 +176,7 @@ public class SupplierController implements Initializable, SupplierInterface {
     public void logoutAction(ActionEvent event) throws Exception {
         ((Node) (event.getSource())).getScene().getWindow().hide();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
+        root.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
         Stage stage = new Stage();
         root.setOnMousePressed((MouseEvent e) -> {
             xOffset = e.getSceneX();
@@ -198,6 +200,7 @@ public class SupplierController implements Initializable, SupplierInterface {
         double height = ((Node) event.getSource()).getScene().getHeight();
 
         Parent root = FXMLLoader.load(getClass().getResource(path));
+        root.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
         Scene scene = new Scene(root, width, height);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle(title);
@@ -210,6 +213,7 @@ public class SupplierController implements Initializable, SupplierInterface {
     public void addAction(ActionEvent event) throws Exception {
     
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/supplier/Add.fxml"));
+        root.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         root.setOnMousePressed((MouseEvent e) -> {
