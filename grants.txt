@@ -1,0 +1,7 @@
+change my.ini file : 
+uncomment bind_address and edit value to 0.0.0.0
+
+
+
+
+GRANT ALL ON inventory.* TO root@'%' IDENTIFIED BY '12345';
