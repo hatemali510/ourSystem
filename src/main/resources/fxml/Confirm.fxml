@@ -32,8 +32,8 @@
       </VBox>
       <VBox alignment="CENTER" prefHeight="100.0" prefWidth="450.0" VBox.vgrow="NEVER">
          <children>
-            <Label fx:id="retailLabel" styleClass="retail" text="Retail: " />
-            <Button mnemonicParsing="false" onAction="#doneAction" prefHeight="25.0" prefWidth="80.0" text="Done">
+            <Label fx:id="retailLabel" styleClass="retail" text="بيع بالتجزئة: " />
+            <Button mnemonicParsing="false" onAction="#doneAction" prefHeight="25.0" prefWidth="80.0" text="تم">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

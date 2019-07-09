@@ -37,7 +37,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
          <children>
-            <Label styleClass="header-label" text="Transaction Report" />
+            <Label styleClass="header-label" text="تقرير المعاملات" />
          </children>
       </HBox>
       <VBox alignment="TOP_CENTER" minWidth="-Infinity" prefWidth="640.0" styleClass="vbox-body" VBox.vgrow="ALWAYS">
@@ -51,7 +51,7 @@
                   </VBox>
                   <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="310.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label fx:id="dateLabel" text="Date:" />
+                        <Label fx:id="dateLabel" text="التاريخ" />
                      </children>
                   </VBox>
                </children>
@@ -71,21 +71,21 @@
                   <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Payable" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
-                  <Label text="Employee" GridPane.halignment="RIGHT" />
+                  <Label text="المبلغ المستحق" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+                  <Label text="العامل" GridPane.halignment="RIGHT" />
                   <TextField fx:id="employeeField" editable="false" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <Label text="Total" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                           <Label text="الإجمالى" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
                   <TextField fx:id="totalField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <Label text="Vat" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-                  <Label text="Discount" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+                  <Label text="ضريبة القيمة المضافة" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                  <Label text="الخصم" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
                   <TextField fx:id="discountField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets right="10.0" />
@@ -106,8 +106,8 @@
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <Label text="Paid" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
-                  <Label text="Returned" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+                  <Label text="المبلغ المدفوع" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                  <Label text="المبلغ الراجع" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
                   <TextField fx:id="vatField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets right="10.0" />
@@ -122,7 +122,7 @@
       </VBox>
       <HBox alignment="CENTER_RIGHT" prefHeight="30.0" styleClass="bottom-bar" VBox.vgrow="NEVER">
          <children>
-            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#handlePrint" prefHeight="54.0" prefWidth="120.0" text="Print">
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#handlePrint" prefHeight="54.0" prefWidth="120.0" text="طباعة">
                <HBox.margin>
                   <Insets right="15.0" />
                </HBox.margin></Button>

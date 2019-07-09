@@ -60,7 +60,7 @@
             </HBox>
             <VBox alignment="CENTER" prefHeight="450.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label styleClass="sign-in" text="Sign In">
+                  <Label styleClass="sign-in" text="تسجيل دخول">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -77,12 +77,12 @@
                      <children>
                         <Separator maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="300.0" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
                         <Separator maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="300.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                        <TextField fx:id="usernameField" prefHeight="32.0" prefWidth="300.0" promptText="Username" GridPane.valignment="BOTTOM" />
-                        <PasswordField fx:id="passwordField" prefHeight="32.0" prefWidth="300.0" promptText="Password" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                        <TextField fx:id="usernameField" prefHeight="32.0" prefWidth="300.0" promptText="إسم المستخدم" GridPane.valignment="BOTTOM" />
+                        <PasswordField fx:id="passwordField" prefHeight="32.0" prefWidth="300.0" promptText="كلمة المرور" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
                         <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="300.0" spacing="30.0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#loginAction" prefHeight="25.0" prefWidth="80.0" styleClass="buttons" text="Login" />
-                              <Button mnemonicParsing="false" onAction="#cancelAction" prefHeight="25.0" prefWidth="80.0" styleClass="buttons" text="Cancel" />
+                              <Button mnemonicParsing="false" onAction="#loginAction" prefHeight="25.0" prefWidth="150.0" styleClass="buttons" text="تسجيل الدخول" />
+                              <Button mnemonicParsing="false" onAction="#cancelAction" prefHeight="25.0" prefWidth="150.0" styleClass="buttons" text="إلغاء" />
                            </children>
                         </HBox>
                      </children>

@@ -36,8 +36,8 @@
               </rowConstraints>
                <children>
                   <TextField fx:id="totalAmountField" alignment="CENTER" editable="false" />
-                  <TextField fx:id="paidAmountField" alignment="CENTER" promptText="Paid Amount" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#confirmAction" prefHeight="44.0" prefWidth="351.0" styleClass="buttons" text="Checkout" GridPane.rowIndex="2" />
+                  <TextField fx:id="paidAmountField" alignment="CENTER" promptText="المبلغ المدفوع" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#confirmAction" prefHeight="44.0" prefWidth="351.0" styleClass="buttons" text="ادفع" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>
