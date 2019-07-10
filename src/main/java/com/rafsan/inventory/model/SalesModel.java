@@ -4,6 +4,8 @@ import com.rafsan.inventory.HibernateUtil;
 import com.rafsan.inventory.dao.SaleDao;
 import com.rafsan.inventory.entity.Sale;
 import java.util.List;
+import java.util.Observable;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -25,21 +27,16 @@ public class SalesModel implements SaleDao {
         List<Sale> products = session.createQuery("from Sale").list();
         session.beginTransaction().commit();
         products.stream().forEach(list::add);
-
         return list;
     }
-
+     
     @Override
     public ObservableList<Sale> getSaleByProductId(long id) {
-
         ObservableList<Sale> list = FXCollections.observableArrayList();
-
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-
         List<Sale> products = (List<Sale>) session.createCriteria(Sale.class)
                 .add(Restrictions.eq("product.id", id)).list();
-
         session.beginTransaction().commit();
         products.stream().forEach(list::add);
 

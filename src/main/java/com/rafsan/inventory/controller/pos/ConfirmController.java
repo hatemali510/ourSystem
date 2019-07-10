@@ -2,6 +2,8 @@ package com.rafsan.inventory.controller.pos;
 
 import com.rafsan.inventory.entity.Item;
 import com.rafsan.inventory.pdf.PrintInvoice;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -25,17 +27,17 @@ public class ConfirmController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        retailLabel.setText("Change: $" + retail);
+        retailLabel.setText("الباقي: " + retail);
 
-        StringBuilder details = new StringBuilder("Item Name\t\t" + "Cost\t\t" + "Quantity\t\t" + "Total\n");
+        StringBuilder details = new StringBuilder("Item Name         " + "Cost        " + "Quantity        " + "Total\n");
 
         for (Item i : items) {
             details.append(i.getItemName())
-                    .append("\t\t\t")
+                    .append("             ")
                     .append(i.getUnitPrice())
-                    .append("\t\t\t")
+                    .append("          ")
                     .append(i.getQuantity())
-                    .append("\t\t\t")
+                    .append("          ")
                     .append(i.getTotal())
                     .append("\n");
         }
@@ -50,7 +52,7 @@ public class ConfirmController implements Initializable {
     }
 
     @FXML
-    public void doneAction(ActionEvent event) {
+    public void doneAction(ActionEvent event) throws IOException {
         billingArea.setText("");
         PrintInvoice pi = new PrintInvoice(items, barcode);
         pi.generateReport();

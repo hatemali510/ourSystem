@@ -4,8 +4,27 @@ import com.rafsan.inventory.entity.Item;
 import com.rafsan.inventory.entity.Payment;
 import com.rafsan.inventory.entity.Product;
 import com.rafsan.inventory.model.ProductModel;
+import com.rafsan.inventory.pdf.PrintInvoice;
+import com.qoppa.pdf.PDFException;
+import com.qoppa.pdf.PDFPermissionException;
+import com.qoppa.pdfPrint.PDFPrint;
+
+import java.awt.print.PrinterException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.print.Doc;
+import javax.print.DocFlavor;
+import javax.print.DocPrintJob;
+import javax.print.PrintService;
+import javax.print.PrintServiceLookup;
+import javax.print.SimpleDoc;
+import javax.print.attribute.HashPrintRequestAttributeSet;
+import javax.print.attribute.PrintRequestAttributeSet;
+
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -236,6 +255,9 @@ public class PosController implements Initializable, ProductInterface {
 
         if (subTotalPrice > 0) {
             paymentButton.setDisable(false);
+            discountField.setEditable(true);
+            // change the zero for add the vat value
+            // get the vat from the configuration value or from database 
             double vat = (double) subTotalPrice * 0.0;
             double netPayablePrice = (double) (Math.abs((subTotalPrice + vat)));
             subTotalField.setText(String.valueOf(subTotalPrice));
@@ -282,7 +304,10 @@ public class PosController implements Initializable, ProductInterface {
         stage.getIcons().add(new Image("/images/logo.png"));
         stage.setScene(scene);
         stage.showAndWait();
-        
+        discountField.setText("");
+        discountField.setEditable(false);
+        printFile();
+
         resetInterface();
     }
 
@@ -352,5 +377,46 @@ public class PosController implements Initializable, ProductInterface {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
+    }
+    
+    
+    void printFile() throws PrinterException, PDFException {
+//    	FileInputStream psStream = null;
+//        try {
+//            psStream = new FileInputStream("Invoice.pdf");
+//            } catch (FileNotFoundException ffne) {
+//              ffne.printStackTrace();
+//            }
+//            if (psStream == null) {
+//                return;
+//            }
+//        DocFlavor psInFormat = DocFlavor.INPUT_STREAM.AUTOSENSE;
+//        Doc myDoc = new SimpleDoc(psStream, psInFormat, null);  
+//        PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
+//        PrintService[] services = PrintServiceLookup.lookupPrintServices(psInFormat, aset);
+//         
+//        // this step is necessary because I have several printers configured
+//        PrintService myPrinter = null;
+//        for (int i = 0; i < services.length; i++){
+//            String svcName = services[i].toString();           
+//            if (svcName.contains("printer closest to me")){
+//                myPrinter = services[i];
+//                System.out.println("my printer found: "+svcName);
+//                break;
+//            }
+//        }
+//         
+//        if (myPrinter != null) {            
+//            DocPrintJob job = myPrinter.createPrintJob();
+//            try {
+//            job.print(myDoc, aset);
+//             
+//            } catch (Exception pe) {pe.printStackTrace();}
+//        } else {
+//            System.out.println("no printer services found");
+//        }
+    	PDFPrint pdfPrint = new PDFPrint("Invoice.pdf", null);
+        pdfPrint.printToDefaultPrinter(null);
+    	
     }
 }

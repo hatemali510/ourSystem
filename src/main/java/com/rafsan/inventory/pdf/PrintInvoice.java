@@ -12,8 +12,29 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.rafsan.inventory.entity.Item;
+
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.print.Doc;
+import javax.print.DocFlavor;
+import javax.print.DocPrintJob;
+import javax.print.PrintException;
+import javax.print.PrintService;
+import javax.print.PrintServiceLookup;
+import javax.print.SimpleDoc;
+import javax.print.attribute.AttributeSet;
+import javax.print.attribute.HashAttributeSet;
+import javax.print.attribute.HashPrintRequestAttributeSet;
+import javax.print.attribute.PrintRequestAttributeSet;
+import javax.print.attribute.standard.ColorSupported;
+import javax.print.attribute.standard.PrinterName;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -21,7 +42,8 @@ public class PrintInvoice {
 
     private final ObservableList<Item> items;
     private final String barcode;
-
+    
+   
     public PrintInvoice(ObservableList<Item> items, String barcode) {
         this.items = FXCollections.observableArrayList(items);
         this.barcode = barcode;
@@ -31,7 +53,16 @@ public class PrintInvoice {
 
         try {
             Document document = new Document();
-            FileOutputStream fs = new FileOutputStream("Report.pdf");
+            
+            //from
+            File invcFl = new File("Invoice.pdf");
+            if(invcFl.exists()) {
+            	invcFl.delete();
+            }
+            
+            invcFl.createNewFile();
+            FileOutputStream fs = new FileOutputStream(invcFl, false);
+            //to
             PdfWriter writer = PdfWriter.getInstance(document, fs);
             document.open();
 
@@ -52,7 +83,9 @@ public class PrintInvoice {
             document.close();
         } catch (DocumentException | FileNotFoundException ex) {
             System.out.println(ex.getMessage());
-        }
+        } catch (IOException e) {
+        	System.out.println(e.getMessage());
+		}
     }
 
     private PdfPTable createTable() {
@@ -90,4 +123,6 @@ public class PrintInvoice {
             paragraph.add(new Paragraph(" "));
         }
     }
+    
+   
 }

@@ -9,6 +9,8 @@ import com.rafsan.inventory.model.EmployeeModel;
 import com.rafsan.inventory.model.InvoiceModel;
 import com.rafsan.inventory.model.ProductModel;
 import com.rafsan.inventory.model.SalesModel;
+import com.rafsan.inventory.pdf.PrintInvoice;
+
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ResourceBundle;
@@ -41,14 +43,15 @@ public class InvoiceController implements Initializable {
 
     private double xOffset = 0;
     private double yOffset = 0;
-
+    private Double netPriceAfterDiscount;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         productModel = new ProductModel();
         employeeModel = new EmployeeModel();
         salesModel = new SalesModel();
         invoiceModel = new InvoiceModel();
-        totalAmountField.setText(String.valueOf(netPrice));
+        netPriceAfterDiscount=netPrice-payment.getDiscount();
+        totalAmountField.setText(String.valueOf(netPriceAfterDiscount));
     }
 
     public void setData(double netPrice, ObservableList<Item> items, Payment payment) {
@@ -63,7 +66,7 @@ public class InvoiceController implements Initializable {
 
         if (validateInput()) {
             double paid = Double.parseDouble(paidAmountField.getText().trim());
-            double retail = Math.abs(paid - netPrice);
+            double retail = Math.abs(paid - netPriceAfterDiscount);
 
             String invoiceId = String.valueOf(new Timestamp(System.currentTimeMillis()).getTime());
 
@@ -97,7 +100,10 @@ public class InvoiceController implements Initializable {
 
                 salesModel.saveSale(sale);
             }
-
+          //from
+            PrintInvoice pi = new PrintInvoice(items, invoiceId);
+            pi.generateReport();
+            //to
             FXMLLoader loader = new FXMLLoader((getClass().getResource("/fxml/Confirm.fxml")));
             ConfirmController controller = new ConfirmController();
             controller.setData(retail, items, invoiceId);
@@ -127,7 +133,7 @@ public class InvoiceController implements Initializable {
 
         if (paidAmountField.getText() == null || paidAmountField.getText().length() == 0) {
             errorMessage += "Invalid Input!\n";
-        } else if (Double.parseDouble(paidAmountField.getText()) < netPrice) {
+        } else if (Double.parseDouble(paidAmountField.getText()) < netPriceAfterDiscount) {
             errorMessage += "Insufficient Input!\n";
         }
 
