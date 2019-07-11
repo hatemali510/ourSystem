@@ -54,7 +54,7 @@ public class ConfirmController implements Initializable {
     @FXML
     public void doneAction(ActionEvent event) throws IOException {
         billingArea.setText("");
-        PrintInvoice pi = new PrintInvoice(items, barcode);
+        PrintInvoice pi = new PrintInvoice(items, barcode, 0, retail,0);
         pi.generateReport();
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }

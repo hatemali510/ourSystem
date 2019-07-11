@@ -79,7 +79,7 @@ public class ViewController implements Initializable {
         	items.add(new Item(name, price, quantity, total));
          }
          
-    	 PrintInvoice pi = new PrintInvoice(items, invoice.getId());
+    	 PrintInvoice pi = new PrintInvoice(items, invoice.getId(),invoice.getPaid(),invoice.getReturned(),invoice.getTotal());
          pi.generateReport();
          Desktop desktop = Desktop.getDesktop();
          File invcFl = new File("Invoice.pdf");

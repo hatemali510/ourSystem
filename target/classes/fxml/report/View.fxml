@@ -123,7 +123,7 @@
       <HBox alignment="CENTER_RIGHT" prefHeight="30.0" styleClass="bottom-bar" VBox.vgrow="NEVER">
          <children>
           
-                <Button fx:id="ShowButton" mnemonicParsing="false" onAction="#InvoiceDetails" prefHeight="54.0" prefWidth="120.0" text="عرض">
+                <Button fx:id="ShowButton" mnemonicParsing="false" onAction="#InvoiceDetails" prefHeight="54.0" prefWidth="120.0" text="تفاصيل الفاتورة">
                <HBox.margin>
                   <Insets right="15.0" />
                </HBox.margin></Button>

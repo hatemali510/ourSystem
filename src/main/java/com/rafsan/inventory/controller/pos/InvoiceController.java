@@ -101,7 +101,7 @@ public class InvoiceController implements Initializable {
                 salesModel.saveSale(sale);
             }
           //from
-            PrintInvoice pi = new PrintInvoice(items, invoiceId);
+            PrintInvoice pi = new PrintInvoice(items, invoiceId,paid,retail,netPriceAfterDiscount);
             pi.generateReport();
             //to
             FXMLLoader loader = new FXMLLoader((getClass().getResource("/fxml/Confirm.fxml")));

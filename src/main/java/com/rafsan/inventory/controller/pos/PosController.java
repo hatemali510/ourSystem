@@ -4,15 +4,11 @@ import com.rafsan.inventory.entity.Item;
 import com.rafsan.inventory.entity.Payment;
 import com.rafsan.inventory.entity.Product;
 import com.rafsan.inventory.model.ProductModel;
-import com.rafsan.inventory.pdf.PrintInvoice;
 import com.qoppa.pdf.PDFException;
-import com.qoppa.pdf.PDFPermissionException;
 import com.qoppa.pdfPrint.PDFPrint;
 
 import java.awt.print.PrinterException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -304,7 +300,7 @@ public class PosController implements Initializable, ProductInterface {
         stage.getIcons().add(new Image("/images/logo.png"));
         stage.setScene(scene);
         stage.showAndWait();
-        discountField.setText("");
+        discountField.setText("0.0");
         discountField.setEditable(false);
         printFile();
 
@@ -381,40 +377,6 @@ public class PosController implements Initializable, ProductInterface {
     
     
     void printFile() throws PrinterException, PDFException {
-//    	FileInputStream psStream = null;
-//        try {
-//            psStream = new FileInputStream("Invoice.pdf");
-//            } catch (FileNotFoundException ffne) {
-//              ffne.printStackTrace();
-//            }
-//            if (psStream == null) {
-//                return;
-//            }
-//        DocFlavor psInFormat = DocFlavor.INPUT_STREAM.AUTOSENSE;
-//        Doc myDoc = new SimpleDoc(psStream, psInFormat, null);  
-//        PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
-//        PrintService[] services = PrintServiceLookup.lookupPrintServices(psInFormat, aset);
-//         
-//        // this step is necessary because I have several printers configured
-//        PrintService myPrinter = null;
-//        for (int i = 0; i < services.length; i++){
-//            String svcName = services[i].toString();           
-//            if (svcName.contains("printer closest to me")){
-//                myPrinter = services[i];
-//                System.out.println("my printer found: "+svcName);
-//                break;
-//            }
-//        }
-//         
-//        if (myPrinter != null) {            
-//            DocPrintJob job = myPrinter.createPrintJob();
-//            try {
-//            job.print(myDoc, aset);
-//             
-//            } catch (Exception pe) {pe.printStackTrace();}
-//        } else {
-//            System.out.println("no printer services found");
-//        }
     	PDFPrint pdfPrint = new PDFPrint("Invoice.pdf", null);
         pdfPrint.printToDefaultPrinter(null);
     	
