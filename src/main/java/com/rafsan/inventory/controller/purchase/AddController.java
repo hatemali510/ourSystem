@@ -49,8 +49,8 @@ public class AddController implements Initializable, PurchaseInterface {
 
         if (validateInput()) {
 
-            Product product = productModel.getProduct(productBox.getSelectionModel().getSelectedIndex() + 1);
-            Supplier supplier = supplierModel.getSupplier(supplierBox.getSelectionModel().getSelectedIndex() + 1);
+            Product product = productModel.getProductByName(productBox.getSelectionModel().getSelectedItem().toString());
+            Supplier supplier = supplierModel.getSupplierByname(supplierBox.getSelectionModel().getSelectedItem().toString());
             double quantity = Double.parseDouble(quantityField.getText());
             double price = Double.parseDouble(priceField.getText());
             double total = quantity * price;
@@ -79,7 +79,7 @@ public class AddController implements Initializable, PurchaseInterface {
             alert.showAndWait();
         }
     }
-
+    
     @FXML
     public void handleCancel(ActionEvent event) {
         priceField.setText("");
@@ -91,6 +91,7 @@ public class AddController implements Initializable, PurchaseInterface {
     private boolean validateInput() {
 
         String errorMessage = "";
+       
 
         if (priceField.getText() == null || priceField.getText().length() == 0) {
             errorMessage += "No valid price!\n";

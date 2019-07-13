@@ -3,11 +3,13 @@ package com.rafsan.inventory.model;
 import com.rafsan.inventory.HibernateUtil;
 import com.rafsan.inventory.dao.SupplierDao;
 import com.rafsan.inventory.entity.Category;
+import com.rafsan.inventory.entity.Product;
 import com.rafsan.inventory.entity.Supplier;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Projections;
 
@@ -36,6 +38,15 @@ public class SupplierModel implements SupplierDao {
         Supplier supplier = session.get(Supplier.class, id);
         session.getTransaction().commit();
 
+        return supplier;
+    }
+    
+    public Supplier getSupplierByname(String name) {
+    	session=HibernateUtil.getSessionFactory().getCurrentSession();
+    	session.beginTransaction();
+    	Query query = session.createQuery("from Supplier where name=:name");
+        query.setParameter("name", name);
+        Supplier supplier = (Supplier) query.uniqueResult();
         return supplier;
     }
 

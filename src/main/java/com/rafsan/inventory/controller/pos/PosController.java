@@ -1,14 +1,15 @@
 package com.rafsan.inventory.controller.pos;
 
+
 import com.rafsan.inventory.entity.Item;
 import com.rafsan.inventory.entity.Payment;
 import com.rafsan.inventory.entity.Product;
 import com.rafsan.inventory.model.ProductModel;
-import com.qoppa.pdf.PDFException;
-import com.qoppa.pdfPrint.PDFPrint;
 
+import java.awt.Desktop;
 import java.awt.print.PrinterException;
-
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -376,9 +377,12 @@ public class PosController implements Initializable, ProductInterface {
     }
     
     
-    void printFile() throws PrinterException, PDFException {
-    	PDFPrint pdfPrint = new PDFPrint("Invoice.pdf", null);
-        pdfPrint.printToDefaultPrinter(null);
+    void printFile() throws  IOException {
+//    	PDFPrint pdfPrint = new PDFPrint("Invoice.pdf", null);
+//        pdfPrint.printToDefaultPrinter(null);
+    	Desktop desktop = Desktop.getDesktop();
+        File invcFl = new File("Invoice.pdf");
+        desktop.open(invcFl);
     	
     }
 }

@@ -51,9 +51,9 @@ public class AddController implements Initializable, ProductInterface {
     public void handleSave(ActionEvent event) {
 
         if (validateInput()) {
-
-            Category category = categoryModel.getCategory(categoryBox.getSelectionModel().getSelectedIndex() + 1);
-            Supplier supplier = supplierModel.getSupplier(supplierBox.getSelectionModel().getSelectedIndex() + 1);
+            Category category = categoryModel.getCategoryByName(categoryBox.getSelectionModel().getSelectedItem().toString());
+            Supplier supplier = supplierModel.getSupplierByname(supplierBox.getSelectionModel().getSelectedItem().toString());
+            System.out.println(supplier);
             Product product = new Product(
                     nameField.getText(),
                     Double.parseDouble(priceField.getText()),
@@ -62,7 +62,6 @@ public class AddController implements Initializable, ProductInterface {
                     category,
                     supplier
             );
-
             productModel.saveProduct(product);
             PRODUCTLIST.clear();
             PRODUCTLIST.addAll(productModel.getProducts());
@@ -89,6 +88,12 @@ public class AddController implements Initializable, ProductInterface {
     private boolean validateInput() {
 
         String errorMessage = "";
+        for(int i=0;i<PRODUCTLIST.size();i++) {
+        	if(PRODUCTLIST.get(i).getProductName().equals(nameField.getText())){
+        		errorMessage+="البضاعة  مضافة من قبل اختار اسم اخر\n";
+        		break;
+        	}
+        }
 
         if (nameField.getText() == null || nameField.getText().length() == 0) {
             errorMessage += "No valid name!\n";

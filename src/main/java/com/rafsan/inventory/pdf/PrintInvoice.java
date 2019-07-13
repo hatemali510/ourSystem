@@ -81,7 +81,7 @@ public class PrintInvoice {
 
             PdfPTable table = new PdfPTable(2);
 
-            PdfPCell c1 = new PdfPCell(new Phrase("إسم المحل", font));
+            PdfPCell c1 = new PdfPCell(new Phrase("اليسر للتجارة والتوزيع", font));
             c1.setColspan(2);
             c1.setRunDirection(PdfWriter.RUN_DIRECTION_RTL);
             c1.setHorizontalAlignment(Element.ALIGN_CENTER);

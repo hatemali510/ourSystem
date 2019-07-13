@@ -75,6 +75,12 @@ public class AddController implements Initializable, EmployeeInterface {
     private boolean validateInput() {
 
         String errorMessage = "";
+        for(int i=0;i<EMPLOYEELIST.size();i++) {
+        	if(EMPLOYEELIST.get(i).getUserName().equals(usernameField.getText())){
+        		errorMessage+="اسم المستخدم مضاف من قبل اختار اسم مستخدم اخر للموظف  \n";
+        		break;
+        	}
+        }
 
         if (firstField.getText() == null || firstField.getText().length() == 0) {
             errorMessage += "No valid first name!\n";

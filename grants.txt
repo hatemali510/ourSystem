@@ -3,5 +3,10 @@ uncomment bind_address and edit value to 0.0.0.0
 
 
 
+open mysql command :
+cd c:\xampp\mysql\bin
 
+
+and write this command : 
+mysql.exe -u root -p
 GRANT ALL ON inventory.* TO root@'%' IDENTIFIED BY '12345';

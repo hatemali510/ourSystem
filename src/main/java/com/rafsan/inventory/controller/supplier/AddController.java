@@ -65,6 +65,12 @@ public class AddController implements Initializable, SupplierInterface {
     private boolean validateInput() {
 
         String errorMessage = "";
+        for(int i=0;i<SUPPLIERLIST.size();i++) {
+        	if(SUPPLIERLIST.get(i).getName().equals(supplierField.getText())){
+        		errorMessage+="الموزع مضاف من قبل اختار اسم اخر للموزع \n";
+        		break;
+        	}
+        }
 
         if (supplierField.getText() == null || supplierField.getText().length() == 0) {
             errorMessage += "No valid first name!\n";

@@ -55,7 +55,7 @@
                                     <Insets />
                                  </HBox.margin>
                                  <children>
-                                    <Label layoutX="14.0" layoutY="12.0" styleClass="hbox-title" text="المشتريات" />
+                                    <Label layoutX="14.0" layoutY="12.0" styleClass="hbox-title" text="العروض" />
                                  </children>
                               </Pane>
                            </children>
@@ -140,7 +140,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="المشتريات">
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="الروض">
                      <graphic>
                         <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>

@@ -64,7 +64,12 @@ public class AddController implements Initializable, CategoryInterface {
     private boolean validateInput() {
 
         String errorMessage = "";
-
+        for(int i=0;i<CATEGORYLIST.size();i++) {
+        	if(CATEGORYLIST.get(i).getType().equals(typeField.getText())){
+        		errorMessage+="الصنف مضاف من قبل اختار اسم اخر للصنف \n";
+        		break;
+        	}
+        }
         if (typeField.getText() == null || typeField.getText().length() == 0) {
             errorMessage += "No valid name!\n";
         }

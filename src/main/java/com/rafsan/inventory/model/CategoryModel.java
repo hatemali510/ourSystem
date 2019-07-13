@@ -3,10 +3,13 @@ package com.rafsan.inventory.model;
 import com.rafsan.inventory.HibernateUtil;
 import com.rafsan.inventory.dao.CategoryDao;
 import com.rafsan.inventory.entity.Category;
+import com.rafsan.inventory.entity.Employee;
+
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Projections;
 
@@ -38,7 +41,23 @@ public class CategoryModel implements CategoryDao {
 
         return category;
     }
-
+    
+    public Category getCategoryByName(String name) {
+    	session =HibernateUtil.getSessionFactory().getCurrentSession();
+    	session.beginTransaction();
+    	System.out.println(name);
+        Query query = session.createQuery("from Category where type = :name");
+        query.setParameter("name", name);
+        Category category =null;
+        try {
+            category = (Category) query.uniqueResult();
+        }catch (Exception e) {
+			// TODO: handle exception
+        	e.printStackTrace();
+		}
+        return category;
+    }
+    
     @Override
     public void saveCategory(Category category) {
 
